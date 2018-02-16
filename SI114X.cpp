@@ -86,7 +86,7 @@ void SI114X::DeInit(void)
  */
 bool SI114X::Begin(void)
 {
-  Wire.begin();
+  Wire.begin(2,14);
   //
   //Init IIC  and reset si1145
   //
@@ -214,7 +214,11 @@ uint16_t SI114X::ReadUV(void)
 {
   return (ReadHalfWord(SI114X_AUX_DATA0_UVINDEX0)); 	
 }
- 
- 
- 
- 
+/*--------------------------------------------------------//
+Read Response Register Value
+
+ */
+uint8_t CoolSI114X::ReadResponseReg(void)
+{
+  return (ReadByte(SI114X_RESPONSE));
+}
